@@ -4,7 +4,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   variables:
-    BUILD_WRAPPER_DOWNLOAD_URL: <SONARQUBE_HOST_URL>/static/cpp/build-wrapper-win-x86.zip # Replace <SONARQUBE_HOST_URL> with your SonarQube server URL
+    BUILD_WRAPPER_DOWNLOAD_URL: <SONARQUBE_HOST_URL>/static/cpp/build-wrapper-linux-x86.zip # Replace <SONARQUBE_HOST_URL> with your SonarQube server URL
   steps:
   # Make Build Wrapper available
   - task: SonarQubePrepare@4
