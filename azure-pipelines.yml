@@ -4,7 +4,7 @@ jobs:
   pool:
     vmImage: 'ubuntu-latest'
   variables:
-    BUILD_WRAPPER_DOWNLOAD_URL: <SONARQUBE_HOST_URL>/static/cpp/build-wrapper-linux-x86.zip # Replace <SONARQUBE_HOST_URL> with your SonarQube server URL
+    SONARQUBE_HOST_URL: <SONARQUBE_HOST_URL> # Replace <SONARQUBE_HOST_URL> with your SonarQube server URL
   steps:
   # Make Build Wrapper available
   - task: SonarQubePrepare@4
@@ -15,7 +15,7 @@ jobs:
       extraProperties: "sonar.cfamily.build-wrapper-output=build_wrapper_output_directory"
   - bash: |
       mkdir -p $HOME/.sonar      
-      curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip ${{variables.BUILD_WRAPPER_DOWNLOAD_URL}}
+      curl -sSLo $HOME/.sonar/build-wrapper-linux-x86.zip ${{variables.SONARQUBE_HOST_URL}}/static/cpp/build-wrapper-linux-x86.zip
       unzip -o $HOME/.sonar/build-wrapper-linux-x86.zip -d $HOME/.sonar/
     displayName: Download and install build wrapper
   - bash: |
