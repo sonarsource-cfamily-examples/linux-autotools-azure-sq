@@ -10,7 +10,7 @@ jobs:
       SonarQube: 'azure-sq' # Name of the SonarQube service endpoint you created
       scannerMode: 'CLI'
       configMode: 'file'
-      extraProperties: "sonar.cfamily.build-wrapper-output=bw_output"
+      extraProperties: "sonar.cfamily.build-wrapper-output=build_wrapper_output_directory"
   - bash: |
       mkdir -p $HOME/.sonar
       # Replace <SONARQUBE_HOST_URL> with your SonarQube server URL
@@ -23,7 +23,7 @@ jobs:
       export PATH=$HOME/.sonar/build-wrapper-linux-x86:$PATH
       autoreconf --install
       ./configure
-      build-wrapper-linux-x86-64 --out-dir bw_output make clean all
+      build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory make clean all
     workingDirectory: .
     displayName: Build in build-wrapper
   - task: SonarQubeAnalyze@4
