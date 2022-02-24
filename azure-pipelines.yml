@@ -7,7 +7,7 @@ jobs:
     SONARQUBE_HOST_URL: <SONARQUBE_HOST_URL> # Replace <SONARQUBE_HOST_URL> with your SonarQube server URL
   steps:
   # Make Build Wrapper available
-  - task: SonarQubePrepare@4
+  - task: SonarQubePrepare@5
     inputs:
       SonarQube: 'SonarQube' # Name of the SonarQube service endpoint you created
       scannerMode: 'CLI'
@@ -25,4 +25,4 @@ jobs:
       build-wrapper-linux-x86-64 --out-dir build_wrapper_output_directory make clean all
     workingDirectory: .
     displayName: Build in build-wrapper
-  - task: SonarQubeAnalyze@4
+  - task: SonarQubeAnalyze@5
