@@ -6,11 +6,6 @@ jobs:
   variables:
     SONARQUBE_HOST_URL: https://next.sonarqube.com/sonarqube
   steps:
-  - task: JavaToolInstaller@0
-    inputs:
-      versionSpec: '17'
-      jdkArchitectureOption: 'x64'
-      jdkSourceOption: 'PreInstalled'
   # Make Build Wrapper available
   - task: SonarQubePrepare@5
     inputs:
@@ -31,3 +26,5 @@ jobs:
     workingDirectory: .
     displayName: Build in build-wrapper
   - task: SonarQubeAnalyze@5
+    inputs:
+      jdkversion: 'JAVA_HOME_17_X64'
